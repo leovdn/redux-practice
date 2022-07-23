@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
 import { CartIcon } from "../icons"
 
 const Navbar = () => {
@@ -7,9 +8,13 @@ const Navbar = () => {
   return (
     <nav>
       <div className="nav-center">
-        <h3>Redux Toolkit</h3>
+        <Link to="/">
+          <h3>Redux Toolkit</h3>
+        </Link>
         <div className="nav-container">
-          <CartIcon />
+          <Link to="/cart">
+            <CartIcon />
+          </Link>
           <div className="amount-container">
             <p className="total-amount">{amount}</p>
           </div>

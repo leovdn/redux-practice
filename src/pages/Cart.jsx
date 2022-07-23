@@ -19,19 +19,11 @@ export const Cart = () => {
     dispatch(getCartItems("random"))
   }, [dispatch])
 
-  if (isLoading) {
-    return (
-      <div className="loading">
-        <h1>Loading...</h1>
-      </div>
-    )
-  }
-
   return (
     <main>
-      {isOpen && <Modal />}
       <Navbar />
-      <CartContainer />
+      {isOpen && <Modal />}
+      {isLoading ? <h2>Loading...</h2> : <CartContainer />}
     </main>
   )
 }
