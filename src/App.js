@@ -1,10 +1,10 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import CartContainer from './components/CartContainer';
-import Modal from './components/Modal';
-import Navbar from './components/Navbar';
-import { calculateTotals, getCartItems } from './features/cart/cartSlice';
+import React from "react"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import CartContainer from "./components/CartContainer"
+import Modal from "./components/Modal"
+import Navbar from "./components/Navbar"
+import { calculateTotals, getCartItems } from "./features/cart/cartSlice"
 
 function App() {
   const { cartItems, isLoading } = useSelector((store) => store.cart)
@@ -17,13 +17,15 @@ function App() {
   }, [cartItems])
 
   useEffect(() => {
-    dispatch(getCartItems('random'))
+    dispatch(getCartItems("random"))
   }, [])
 
   if (isLoading) {
-    return <div className='loading'>
-      <h1>Loading...</h1>
-    </div>
+    return (
+      <div className="loading">
+        <h1>Loading...</h1>
+      </div>
+    )
   }
 
   return (
@@ -32,7 +34,7 @@ function App() {
       <Navbar />
       <CartContainer />
     </main>
-  );
+  )
 }
 
-export default App;
+export default App

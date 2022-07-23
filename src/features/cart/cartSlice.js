@@ -1,26 +1,28 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import axios from "axios"
 
-const url = 'http://course-api.com/react-useReducer-cart-project'
+const url = "http://course-api.com/react-useReducer-cart-project"
 
 const initialState = {
   cartItems: [],
   amount: 0,
   total: 0,
-  isLoading: true
+  isLoading: true,
 }
 
-export const getCartItems = createAsyncThunk('cart/getCartItem', async (name, thunkApi) => {
-  try {
-    console.log(thunkApi)
-    const res = await axios.get(url)
-    return res.data
-  } catch (error) {
+export const getCartItems = createAsyncThunk(
+  "cart/getCartItem",
+  async (name, thunkApi) => {
+    try {
+      console.log(thunkApi)
+      const res = await axios.get(url)
+      return res.data
+    } catch (error) {}
   }
-})
+)
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
     clearCart: (state) => {
@@ -31,11 +33,11 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter((item) => item.id !== itemId)
     },
     increase: (state, { payload }) => {
-      const cartItem = state.cartItems.find(item => item.id === payload.id)
+      const cartItem = state.cartItems.find((item) => item.id === payload.id)
       cartItem.amount += 1
     },
     decrease: (state, { payload }) => {
-      const cartItem = state.cartItems.find(item => item.id === payload.id)
+      const cartItem = state.cartItems.find((item) => item.id === payload.id)
       cartItem.amount -= 1
     },
     calculateTotals: (state) => {
@@ -49,7 +51,7 @@ const cartSlice = createSlice({
 
       state.amount = amount
       state.total = total
-    }
+    },
   },
   extraReducers: {
     [getCartItems.pending]: (state) => {
@@ -62,11 +64,12 @@ const cartSlice = createSlice({
     [getCartItems.rejected]: (state) => {
       state.isLoading = false
     },
-  }
+  },
 })
 
 // console.log(cartSlice)
 
-export const { clearCart, removeItem, increase, decrease, calculateTotals } = cartSlice.actions
+export const { clearCart, removeItem, increase, decrease, calculateTotals } =
+  cartSlice.actions
 
 export default cartSlice.reducer
