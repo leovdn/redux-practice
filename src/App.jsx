@@ -5,6 +5,9 @@ import { Routes, Route } from "react-router-dom"
 import { store } from "./store"
 import { Home } from "./pages/Home"
 import { Cart } from "./pages/Cart"
+import { makeServer } from "./services/mirage"
+
+makeServer()
 
 const App = () => {
   return (
