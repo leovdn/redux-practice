@@ -1,10 +1,12 @@
 import React from "react"
+import AddPostForm from "../components/blog/AddPostForm"
+import PostsList from "../components/blog/PostsList"
 import Navbar from "../components/Navbar"
-import PostsList from "../features/posts/PostsList"
 
 export const Home = () => {
   return (
     <main>
+      <AddPostForm />
       <PostsList />
     </main>
   )
