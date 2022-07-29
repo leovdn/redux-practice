@@ -6,7 +6,6 @@ import Navbar from "../components/Navbar"
 export const Home = () => {
   return (
     <main>
-      <AddPostForm />
       <PostsList />
     </main>
   )

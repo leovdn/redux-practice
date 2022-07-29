@@ -1,22 +1,30 @@
 import React from "react"
-import { Provider } from "react-redux"
 import { Routes, Route } from "react-router-dom"
-
 import { store } from "./store"
+
 import { Home } from "./pages/Home"
 import { Cart } from "./pages/Cart"
+import Layout from "./components/Layout"
+
 import { fetchUsers } from "./features/users/usersSlice"
+import AddPostForm from "./components/blog/AddPostForm"
+import SinglePostPage from "./pages/SinglePostPage"
 
 store.dispatch(fetchUsers())
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />}></Route>
-      </Routes>
-    </Provider>
+    <Routes>
+      <Route path="/" element={<Layout />} />
+      <Route index element={<Home />} />
+
+      <Route path="post">
+        <Route index element={<AddPostForm />} />
+        <Route path=":postId" element={<SinglePostPage />} />
+      </Route>
+
+      {/* <Route path="/cart" element={<Cart />}></Route> */}
+    </Routes>
   )
 }
 
