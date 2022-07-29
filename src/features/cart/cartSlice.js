@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
+import { api } from "../../services/api"
 
 const url = "http://course-api.com/react-useReducer-cart-project"
 
@@ -14,10 +15,11 @@ export const getCartItems = createAsyncThunk(
   "cart/getCartItem",
   async (name, thunkApi) => {
     try {
-      console.log(thunkApi)
-      const res = await axios.get(url)
+      const res = await api.get("cart")
       return res.data
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   }
 )
 
@@ -30,21 +32,21 @@ const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       const itemId = action.payload
-      state.cartItems = state.cartItems.filter((item) => item.id !== itemId)
+      state.cartItems = state?.cartItems?.filter((item) => item.id !== itemId)
     },
     increase: (state, { payload }) => {
-      const cartItem = state.cartItems.find((item) => item.id === payload.id)
+      const cartItem = state?.cartItems?.find((item) => item.id === payload.id)
       cartItem.amount += 1
     },
     decrease: (state, { payload }) => {
-      const cartItem = state.cartItems.find((item) => item.id === payload.id)
+      const cartItem = state?.cartItems?.find((item) => item.id === payload.id)
       cartItem.amount -= 1
     },
     calculateTotals: (state) => {
       let amount = 0
       let total = 0
 
-      state.cartItems.forEach((item) => {
+      state.cartItems?.forEach((item) => {
         amount += item.amount
         total += item.amount * item.price
       })
