@@ -4,9 +4,5 @@ import PostsList from "../components/blog/PostsList"
 import Navbar from "../components/Navbar"
 
 export const Home = () => {
-  return (
-    <main>
-      <PostsList />
-    </main>
-  )
+  return <PostsList />
 }

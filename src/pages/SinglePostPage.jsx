@@ -6,8 +6,11 @@ import PostAuthor from "../components/blog/PostAuthor"
 import ReactionButtons from "../components/blog/ReactionButtons"
 import TimeAgo from "../components/blog/TimeAgo"
 
-const SinglePostPage = (postId) => {
-  const post = useSelector((state) => selectPostById(state, postId))
+import { useParams } from "react-router-dom"
+
+const SinglePostPage = () => {
+  const { postId } = useParams()
+  const post = useSelector((state) => selectPostById(state, Number(postId)))
 
   if (!post) {
     return (

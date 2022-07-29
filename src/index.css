@@ -10,6 +10,12 @@ html {
   color: whitesmoke;
 }
 
+header {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
 body {
   min-height: 100vh;
   font-size: 1.5rem;

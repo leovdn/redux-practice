@@ -6,11 +6,8 @@ import { Home } from "./pages/Home"
 import { Cart } from "./pages/Cart"
 import Layout from "./components/Layout"
 
-import { fetchUsers } from "./features/users/usersSlice"
 import AddPostForm from "./components/blog/AddPostForm"
 import SinglePostPage from "./pages/SinglePostPage"
-
-store.dispatch(fetchUsers())
 
 const App = () => {
   return (
