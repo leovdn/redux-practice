@@ -13,8 +13,8 @@ const PostsExcerpt = ({ post }) => {
       <div className="postCredit">
         <PostAuthor userId={post.userId} />
         <TimeAgo timestamp={post.date} />
-        <ReactionButtons post={post} />
       </div>
+      <ReactionButtons post={post} />
     </article>
   )
 }
