@@ -1,10 +1,10 @@
 import React from "react"
 import { useSelector } from "react-redux"
-import { selectPostById } from "../features/posts/postsSlice"
+import { selectPostById } from "./postsSlice"
 
-import PostAuthor from "../components/blog/PostAuthor"
-import ReactionButtons from "../components/blog/ReactionButtons"
-import TimeAgo from "../components/blog/TimeAgo"
+import PostAuthor from "./PostAuthor"
+import ReactionButtons from "./ReactionButtons"
+import TimeAgo from "./TimeAgo"
 
 import { useParams } from "react-router-dom"
 

@@ -5,7 +5,7 @@ import {
   getPostsStatus,
   getPostsError,
   fetchPosts,
-} from "../../features/posts/postsSlice"
+} from "./postsSlice"
 import PostsExcerpt from "./PostsExcerpt"
 
 const PostsList = () => {
