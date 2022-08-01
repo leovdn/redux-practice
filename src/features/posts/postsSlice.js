@@ -40,7 +40,8 @@ export const updatePost = createAsyncThunk(
       const res = await axios.put(`${POSTS_URL}/${id}`, initialPost)
       return res.data
     } catch (error) {
-      return error.message
+      // return error.message
+      return initialPost
     }
   }
 )
@@ -127,7 +128,7 @@ const postsSlice = createSlice({
         state.error = action.error.message
       })
       .addCase(addNewPost.fulfilled, (state, action) => {
-        action.payload.id = nanoid()
+        action.payload.id = state.posts[state.posts.length - 1].id + 1
         action.payload.userId = Number(action.payload.userId)
         action.payload.date = new Date().toISOString()
         action.payload.reactions = {
